@@ -1,32 +1,13 @@
 import React ,{useState }from 'react';
-import { View, Text,StyleSheet,TextInput, Pressable} from 'react-native';
-
-
-async function postCommmand(data){
-  try {
-    const response = await fetch('http://192.168.43.88:3000/api/command', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify(data)
-      });
-    const result = await response.json();
-    console.log("Success:", result);
-    Alert.alert('ok success', [
-      { text: 'OK', onPress: () => console.log('OK Pressed') },]);
-  } catch (error) {
-    Alert.alert('Error, no se pudo Enviar el comando', [
-      { text: 'OK', onPress: () => console.log('OK Pressed') },]);
-  }
-}
+import { View, Text,StyleSheet,TextInput, Pressable, Alert} from 'react-native';
+import postCommmand from '../components/PostComand';
 
 
 export default function BotScreen() {
     const [command, setCommand] = useState('');
     const [instruction, setInstruction] = useState('');
-  
     const sendCommand= async ()=>{
       console.log("sending");
-      //ccambiar link del fetch para otra api,con endpoint distinto de localhost
       postCommmand({"command":command, "message":instruction});
       };
 

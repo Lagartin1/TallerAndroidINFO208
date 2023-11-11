@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen'
 import BotScreen from '../screens/BotScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SplashScreen from '../screens/SplashScreen';
+
 const Stack = createStackNavigator();
 
 export default function MainStack() {
