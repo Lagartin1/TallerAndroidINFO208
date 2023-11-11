@@ -1,9 +1,32 @@
 import React ,{useState }from 'react';
 import { View, Text,StyleSheet,TextInput, Pressable} from 'react-native';
 
+
+async function postCommmand(data){
+  try {
+    const response = await fetch('http://192.168.43.88:3000/api/command', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify(data)
+      });
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+
 export default function BotScreen() {
     const [command, setCommand] = useState('');
-     const [instruction, setInstruction] = useState('');
+    const [instruction, setInstruction] = useState('');
+  
+    const sendCommand= async ()=>{
+      console.log("sending");
+      //ccambiar link del fetch para otra api,con endpoint distinto de localhost
+      postCommmand({"command":command, "message":instruction});
+      };
+
     return (
         <View style={styles.container}>
            <Text style={styles.tL}> Command</Text>
@@ -22,7 +45,7 @@ export default function BotScreen() {
                 value={instruction}
                 onChangeText={(text) => setInstruction(text)}
                 />
-                <Pressable style={styles.buttonC}> 
+                <Pressable style={styles.buttonC} onPress={sendCommand}> 
                     <Text style={styles.textButtonC} > Enviar </Text>
                 </Pressable>
             </View>
