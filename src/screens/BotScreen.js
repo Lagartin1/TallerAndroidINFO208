@@ -25,7 +25,6 @@ export default function BotScreen() {
                 <TextInput
                 style={styles.input}
                 placeholder="instruccion"
-                secureTextEntry
                 value={instruction}
                 onChangeText={(text) => setInstruction(text)}
                 />
