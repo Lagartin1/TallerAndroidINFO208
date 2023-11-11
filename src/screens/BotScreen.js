@@ -11,8 +11,11 @@ async function postCommmand(data){
       });
     const result = await response.json();
     console.log("Success:", result);
+    Alert.alert('ok success', [
+      { text: 'OK', onPress: () => console.log('OK Pressed') },]);
   } catch (error) {
-    console.error("Error:", error);
+    Alert.alert('Error, no se pudo Enviar el comando', [
+      { text: 'OK', onPress: () => console.log('OK Pressed') },]);
   }
 }
 

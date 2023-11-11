@@ -10,9 +10,7 @@ function SplashScreen({navigation}) {
             <Image style={styles.bot} source={require('../imgs/bot.png')} />
             <Image style={styles.uach} source={require('../imgs/uach.png')} />    
         </View>
-    
     )
-
 };
 const styles = StyleSheet.create({
     container: {
