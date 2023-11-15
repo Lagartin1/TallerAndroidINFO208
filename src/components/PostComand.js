@@ -2,9 +2,8 @@ import {Alert} from 'react-native';
 
 export default async function postCommmand(data){
     try {
-      //cambiar link del fetch para otra api,con endpoint distinto de localhost
-      //en caso de usar localhost cambiar la http://192.168.1.1:3000 -> http://IPV:3000
-      const response = await fetch('http://192.168.1.11:3000/api/command', {
+      //cambiar link del fetch
+      const response = await fetch('http://localhost:3000/api/command', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(data)
